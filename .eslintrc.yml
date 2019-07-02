@@ -1,0 +1,15 @@
+parser: '@typescript-eslint/parser'
+env:
+  node: true
+  amd: true
+  es6: true
+extends:
+  - 'plugin:@typescript-eslint/recommended'
+  - 'prettier/@typescript-eslint'
+rules:
+  linebreak-style: 0
+  no-console: 0
+  import/no-unresolved: 0 # its only disabled for airbnb part of check. Should define webpack for resolving imports?
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
