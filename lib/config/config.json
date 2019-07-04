@@ -1,0 +1,23 @@
+{
+  "dev":{
+    "connectionString":"postgres://lejugbky:A8EjvzxYE7pVrYLRPcTodMW7EB4hn09t@manny.db.elephantsql.com:5432/lejugbky",
+    "options": {
+      "database":"lejugbky",
+      "dialect":"postgres"
+    }
+  },
+  "test":{
+    "connectionString":"postgres://lejugbky:A8EjvzxYE7pVrYLRPcTodMW7EB4hn09t@manny.db.elephantsql.com:5432/lejugbky",
+    "options": {
+      "database":"lejugbky",
+      "dialect":"postgres"
+    }
+  },
+  "prod":{
+    "connectionString":"postgres://lejugbky:A8EjvzxYE7pVrYLRPcTodMW7EB4hn09t@manny.db.elephantsql.com:5432/lejugbky",
+    "options": {
+      "database":"lejugbky",
+      "dialect":"postgres"
+    }
+  }
+}

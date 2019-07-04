@@ -1,10 +1,19 @@
-import {Sequelize} from 'sequelize-typescript';
-import {Op} from 'sequelize';
+import { Sequelize } from 'sequelize-typescript';
+import { Op } from 'sequelize';
+import { Config } from './config/types';
+import { getConfig } from './config/config-helpers';
 
-export const sequelize = new Sequelize('postgres://lejugbky:A8EjvzxYE7pVrYLRPcTodMW7EB4hn09t@manny.db.elephantsql.com:5432/lejugbky',{
-    database: 'lejugbky',
-    dialect: 'postgres',
-    operatorsAliases: Op,
-    storage: ':memory:',
-    models: [__dirname + '/models']
+const config: Config = getConfig();
+export const sequelize = new Sequelize(config.connectionString, {
+  database: config.options.database,
+  dialect: config.options.dialect as
+    | 'mysql'
+    | 'postgres'
+    | 'sqlite'
+    | 'mariadb'
+    | 'mssql'
+    | 'mariadb',
+  operatorsAliases: Op,
+  storage: ':memory:',
+  models: [__dirname + '/models'],
 });
