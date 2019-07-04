@@ -1,5 +1,5 @@
 {
-  "name": "Rent estimator",
+  "name": "Rentestimator",
   "version": "1.0.0",
   "description": "Sample express typescript, PostgreSQL",
   "main": "index.js",
@@ -8,7 +8,10 @@
     "@types/pg": "^7.4.14",
     "express": "^4.17.1",
     "npm-check-updates": "^3.1.13",
-    "pg": "^7.11.0"
+    "pg": "^7.11.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.9.2",
+    "sequelize-typescript": "^1.0.0-beta.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.11.0",
@@ -23,8 +26,8 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=dev npx ts-node src\\index.ts",
-    "start:idea": "cross-env NODE_ENV=dev ts-node --ignore false src/index.ts"
+    "start": "cross-env NODE_ENV=dev npx ts-node index.ts",
+    "start:idea": "cross-env NODE_ENV=dev ts-node --ignore false index.ts"
   },
   "repository": {
     "type": "git",
