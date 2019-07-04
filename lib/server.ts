@@ -2,18 +2,18 @@
  * Created by MD.ImdadulHuq on 02-Jul-19.
  */
 
-import {createServer} from 'http';
-import {app} from './app';
-import {sequelize} from './sequelize';
+import { createServer } from 'http';
+import { app } from './app';
+import { sequelize } from './sequelize';
 
 const port = process.env.PORT || 3000;
 
 (async () => {
-  await sequelize.sync({force: true});
-
-  createServer(app)
-      .listen(
-          port,
-          () => console.info(`Server running on port ${port}`)
-      );
+  try {
+    await sequelize.sync({ force: false });
+  }
+  catch (e) {
+    console.log(e.toString())
+  }
+  createServer(app).listen(port, () => console.info(`Server running on port ${port}`));
 })();

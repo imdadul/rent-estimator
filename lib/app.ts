@@ -1,6 +1,7 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import {rents} from './routes/rents';
+import {properties} from './routes/properties';
+import {insertInitData, startJob} from "./tasks/rent-uploader";
 
 export const app = express();
 
@@ -19,5 +20,9 @@ app.use((req, res, next) => {
 
     next();
 });
+app.use('/properties', properties);
 
-app.use('/rents', rents);
+// insertInitData().then(()=> {
+//     var a=1;
+// });
+

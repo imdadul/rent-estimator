@@ -1,15 +1,15 @@
 {
   "dev":{
-    "connectionString":"postgres://lejugbky:A8EjvzxYE7pVrYLRPcTodMW7EB4hn09t@manny.db.elephantsql.com:5432/lejugbky",
+    "connectionString":"postgres://jihztfnywtysmk:fa2ad7d1048b960960bf87b194376f6a18b4db3d2d2820e539e0ffd59563cb08@ec2-54-217-234-157.eu-west-1.compute.amazonaws.com:5432/dfgvtdt6povr82",
     "options": {
-      "database":"lejugbky",
+      "database":"dfgvtdt6povr82",
       "dialect":"postgres"
     }
   },
   "test":{
-    "connectionString":"postgres://lejugbky:A8EjvzxYE7pVrYLRPcTodMW7EB4hn09t@manny.db.elephantsql.com:5432/lejugbky",
+    "connectionString":"postgres://jihztfnywtysmk:fa2ad7d1048b960960bf87b194376f6a18b4db3d2d2820e539e0ffd59563cb08@ec2-54-217-234-157.eu-west-1.compute.amazonaws.com:5432/dfgvtdt6povr82",
     "options": {
-      "database":"lejugbky",
+      "database":"dfgvtdt6povr82",
       "dialect":"postgres"
     }
   },

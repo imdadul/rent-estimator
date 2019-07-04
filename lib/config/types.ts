@@ -4,6 +4,5 @@ export interface Config  {
     options:{
         database: string,
         dialect: string,
-        //dialect: 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'mariadb',
     }
 }

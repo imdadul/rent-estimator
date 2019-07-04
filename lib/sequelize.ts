@@ -16,4 +16,13 @@ export const sequelize = new Sequelize(config.connectionString, {
   operatorsAliases: Op,
   storage: ':memory:',
   models: [__dirname + '/models'],
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+  dialectOptions: {
+    ssl: true
+  }
 });
