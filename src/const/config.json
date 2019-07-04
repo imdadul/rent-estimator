@@ -1,0 +1,17 @@
+{
+  "dev":{
+    "postGreSql": {
+      "connectionString":"postgres://lejugbky:A8EjvzxYE7pVrYLRPcTodMW7EB4hn09t@manny.db.elephantsql.com:5432/lejugbky"
+    }
+  },
+  "test":{
+    "postGreSql": {
+      "connectionString":"mongodb://imdad:123@ds157809.mlab.com:57809/mean-demo-test"
+    }
+  },
+  "prod":{
+    "postGreSql": {
+      "connectionString":"mongodb://imdad:123@ds157809.mlab.com:57809/mean-demo-test"
+    }
+  }
+}
