@@ -4,8 +4,7 @@
 Steps to Run
 1. `npm install`
 2. `npm start`
-3.  Go to http://localhost:3000/properties/estimate/:zipcode/:size
-
+3.  Go to http://localhost:3000/properties/estimate/:zipcode/:size , example zipcode= 10318 & size = 100
 ## How does it work.
 
 There are two csv files in the lib/data folder. They contain rent information.
