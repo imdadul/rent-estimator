@@ -1,5 +1,5 @@
 /*  eslint-disable @typescript-eslint/camelcase */
-import { Router } from 'express';
+import {NextFunction, Router} from 'express';
 import { Property } from '../models/Property';
 
 export const properties = Router();
@@ -9,7 +9,8 @@ properties.get('/estimate/:zipCode/:apartmentSize', async (req, res, next) => {
     const properties:Property[] = await Property.findAll({
       attributes:['zipCode','rent','apartmentSize'],
       where: {
-        zip_code: parseInt(req.params.zipCode)
+        zipCode: parseInt(req.params.zipCode),
+        deleted:false
       }
     });
     let totalRent = 0;
@@ -30,7 +31,7 @@ properties.get('/estimate/:zipCode/:apartmentSize', async (req, res, next) => {
       value:Math.round((totalRent/totalSize)*req.params.apartmentSize)
     })
   } catch (e) {
-    console.log(e.toString())
+    console.log(e.toString());
     next(e);
   }
 });

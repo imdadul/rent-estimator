@@ -10,6 +10,7 @@ extends:
 rules:
   linebreak-style: 0
   no-console: 0
+  '@typescript-eslint/no-explicit-any': 0
   import/no-unresolved: 0 # its only disabled for airbnb part of check. Should define webpack for resolving imports?
 parserOptions:
   ecmaVersion: 2018
