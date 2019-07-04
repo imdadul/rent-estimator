@@ -1,7 +1,7 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import { properties } from './routes/properties';
-import { startJob } from './tasks/rent-uploader';
+import { startProcessingDataFiles } from './tasks/rent-uploader';
 
 export const app = express();
 
@@ -23,4 +23,4 @@ app.use((req, res, next) => {
 app.use('/properties', properties);
 
 // Start the job of updating data
-startJob();
+startProcessingDataFiles();

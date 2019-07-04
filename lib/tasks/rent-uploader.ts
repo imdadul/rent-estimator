@@ -3,6 +3,9 @@ import { CronJob } from 'cron';
 import path from 'path';
 import { Property } from '../models/Property';
 
+/**
+ * @desc    Ideally this function should downloading file from third party end point & return records.
+ */
 const getDataFromCsv = async (csvFilePath: string): Promise<Record<string, any>[]> => {
   return await csv()
     .fromFile(csvFilePath)
@@ -35,9 +38,7 @@ const updatePropertyValues = (property: Property, newDate: any): Property => {
   return property;
 };
 
-export const insertInitData = async (fileName: string): Promise<void> => {
-  const properties: Record<string, any>[] = await getDataFromCsv(path.resolve(__dirname, fileName));
-
+export const saveFileData = async (properties: Record<string, any>[]): Promise<void> => {
   const existingProperties: Property[] = await Property.findAll({
     where: {
       apartmentId: properties.map((property: Property): string => property.apartmentId),
@@ -68,24 +69,29 @@ export const insertInitData = async (fileName: string): Promise<void> => {
   ]);
 };
 
-//@TODO - Whenever this function is triggered,  it should return the name of latest file for lookup.
+const getCurrentFileData = async (fileName: string): Promise<Record<string, any>[]> => {
+  // We only have 2 files at this moment. :(
+  const fileNames = ['../data/rents-2019-01-15.csv', '../data/rents-2019-01-22.csv'];
+  return await getDataFromCsv(path.resolve(__dirname, fileName));
+};
+
+//@TODO - Whenever this function is triggered,  it should return the latest file name to lookup from third party.
 //        This function may give that file name based on every monday value. Assuming cron job execs every Monday.
 //        example: return new Date('today is Monday').format('yyyy-mm-dd') + '.csv'
 const getCurrentFileName = (seq: 0 | 1): string => {
-  // We only have 2 files at this moment.
   const fileNames = ['../data/rents-2019-01-15.csv', '../data/rents-2019-01-22.csv'];
   return fileNames[seq];
 };
 
-export const startJob = (): void => {
-  let c = 0;
+export const startProcessingDataFiles = (): void => {
+  let seq = 0;
   new CronJob(
     '*/40 * * * * *', // Every 40 seconds for easier debugging. every Monday expression would be '* * * * * 01'
     async (): Promise<void> => {
-      await insertInitData(getCurrentFileName(c as 0 | 1));
-      if (c == 0) {
-        // Take the last one.
-        c = 1;
+      await saveFileData(await getCurrentFileData(getCurrentFileName(seq as 0 | 1)));
+      if (seq == 0) {
+        // Take the 2nd one.
+        seq = 1;
       }
     },
     null,
